@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Heroe } from '../../interfaces/heroes.interface';
 
 @Component({
   selector: 'app-confirmar',
@@ -9,8 +10,10 @@ import { MatDialogRef } from '@angular/material/dialog';
 export class ConfirmarComponent implements OnInit {
 
   constructor(
-    private dialogRef:MatDialogRef<ConfirmarComponent>
-  ) { }
+    private dialogRef:MatDialogRef<ConfirmarComponent>,
+    // material- para poder injectar la data del padre agregarccomponent
+    @Inject(MAT_DIALOG_DATA) public data: Heroe
+    ) { }
 
   ngOnInit(): void {
   }
@@ -20,6 +23,6 @@ export class ConfirmarComponent implements OnInit {
   }
 
   cerrar(){
-    this.dialogRef.close();
+    this.dialogRef.close(false);
   }
 }
