@@ -1,4 +1,14 @@
-<h1>Nuevo Héroe <small> {{heroe.superhero}}</small> </h1>
+<h1>
+    {{
+        (heroe.id)
+        ? 'Editar Heroe'
+        : 'Agregar Heroe'
+    }}
+    :
+    <small> 
+        {{heroe.superhero}}
+    </small> 
+</h1>
 
 <div fxLayout="row"
     fxLayoutGap="40px"
@@ -95,7 +105,11 @@
                     color="accent"
                     (click)="guardar()">
                 <mat-icon>save_as</mat-icon>
-                Guardar
+                {{
+                    (heroe.id)
+                    ? 'Actualizar Heroe'
+                    : 'Crear Heroe'
+                }}
             </button>
         </div>
         
